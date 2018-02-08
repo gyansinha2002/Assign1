@@ -21,9 +21,15 @@ using namespace frc;
 using namespace std;
 
 class Robot : public frc::IterativeRobot {
-public:
+	TalonSRX talon;
+	TalonSRX talonR,talonL; 
+	
+	Joystick controller;
 
-	Robot() {
+	Robot() : talonL(1), talonR(2)
+	
+	
+	{
 
 	}
 
@@ -38,7 +44,14 @@ public:
 
 	void TeleopInit() {}
 
-	void TeleopPeriodic() {}
+	void TeleopPeriodic() {
+	if (controller.GetRawButton(1))
+	{
+		talon.Set(ControlMode::PercentOutput,0,5);
+	}
+	else if (controller.GetRawButton(3))
+	{
+		talonL.Set
 
 	void TestPeriodic() {}
 
